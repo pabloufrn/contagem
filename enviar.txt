@@ -1,0 +1,125 @@
+1)
+lista duplamente encadeada com nó cabeça e lista simplesmente encadeada com nó cabeça e nó calda.
+A lista duplamente encadeada usará mais mémoria, mas terá mais desempenho na remoção, assim, considerando que os tipos de dados são pequenos, quando usada com poucos dados será mais eficiente. 
+
+
+2)
+
+Considerando que a estrutura de dados seja um vetor com tamanho fixo e que tenhamos a possibilidade de identificar um espeço vazio, teremos:
+
+Conjunto:
+Busca: O(n) 
+Inserção: O(1)
+Remoção: O(1)
+
+Considerando que a estrutura de dados seja um vetor com tamanho fixo e que tenhamos a possibilidade de identificar um espeço vazio, teremos:
+
+Lista:
+Busca: O(n) 
+Inserção: O(1)
+Remoção: O(1)
+
+Sequencia:
+Busca: @(log(n)) 
+Inserção: O(1)
+Remoção: O(1)
+
+
+3)
+Lista
+{
+	no
+	{
+		prox
+		cont
+	}
+
+	no cabeça 
+
+	buscar(no valor)
+	{
+		atual = cabeça.prox
+		anterior = cabeça
+		enquanto atual diferente de nulo
+		    se atual = valor
+		    	retorne anterior
+		    senão
+		        anterior = atual
+				atual = atual.prox
+
+		retorne nulo
+
+
+	}
+	swap(no prim, no segu)
+	{
+		ant_prim = buscar(prim.valor)
+		ant_segu = buscar(segu.valor)
+		prox_prim = prim.prox
+		prox_segu = segu.prox
+		ant_prim.prox = segu
+		ant_segu.prox = prim
+
+		ant_prim.prox.prox = prox_prim
+		ant_segu.prox.prox = prox_segu
+	}
+
+	merge(Lista um, Lista dois)
+	{
+		atual = cabeça.prox
+		enquanto atual.prox diferente de nulo
+				atual = atual.prox
+
+	    atual.prox = dois.cabeça.next
+	}
+
+}
+
+a) a complexidade do swap é O(n²), considerando que eu faço a busca duas vezes, mas poderia ser O(n) se não houvesse função de busca auxiliar
+b) a complexidade do merge é O(n)
+
+
+4)
+# Usando a lista anterior com atributos públicos, teremos.
+Tabela{
+	busca(funcao hash, chave valor)
+	{
+		lista = tabela[hash(valor)]
+		para cada elemento da lista:
+			se elemento == valor:
+				retorne elemento
+		retorno nulo
+	}
+	inserção(funcao hash, objeto elemento, chave valor)
+	{
+		posiçao = hash(chave)
+		lista = tabela[posição]
+		atual = cabeça.prox
+
+		enquanto atual.prox diferente de nulo
+				se atual.val = elemento:          # considerando que '=' compara as chaves de alguma maneira
+					retorne nulo
+				atual = atual.prox
+		atual.prox = novo no(elemento)
+	}
+	remoção(funcao hash, chave valor)
+	{
+		lista = tabela[hash(valor)]
+		ant_removido = nulo
+		para cada elemento da lista:
+			se elemento.prox = valor:
+				ant_removido = elemento
+
+		se elemento = nulo
+		retorne nulo
+
+	}
+}
+
+   
+
+@ = teta
+
+
+
+
